@@ -39,6 +39,7 @@
                         <th>Kategori</th>
                         <th>Kode Barang</th>
                         <th>Nama Barang</th>
+                        <th>Gambar Barang</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -89,6 +90,14 @@
                     className: "",
                     orderable: true,
                     searchable: true
+                }, {
+                    data: "image",
+                    className: "",
+                    orderable: false,
+                    searchable: false,
+                    render: function(data, type, row) {
+                        return '<img src="' + data + '" alt="Image" class="img-thumbnail" width="100">';
+                    }
                 }, {
                     data: "aksi",
                     className: "",

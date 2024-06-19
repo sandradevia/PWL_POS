@@ -6,8 +6,7 @@
             <h3 class="card-title">{{ $page->title }}</h3>
             <div class="card-tools"></div>
         </div>
-        <div class="card-body"> 
-            @empty($transaksi)
+        <div class="card-body"> @empty($transaksi)
                 <div class="alert alert-danger alert-dismissible">
                     <h5><i class="icon fas fa-ban"></i> Kesalahan!</h5> Data yang Anda cari tidak ditemukan.
                 </div>
@@ -15,23 +14,23 @@
                 <table class="table table-bordered table-striped table-hover table-sm">
                     <tr>
                         <th>ID Transaksi</th>
+                        <td>{{ $transaksi->detail_id }}</td>
+                    </tr>
+                    <tr>
+                        <th>ID Penjualan</th>
                         <td>{{ $transaksi->penjualan_id }}</td>
                     </tr>
                     <tr>
-                        <th>Nama User</th>
-                        <td>{{ $transaksi->user->nama }}</td>
+                        <th>Nama Barang</th>
+                        <td>{{ $transaksi->barang->barang_nama }}</td>
                     </tr>
                     <tr>
-                        <th>Nama Pembeli</th>
-                        <td>{{ $transaksi->pembeli }}</td>
+                        <th>Harga</th>
+                        <td>{{ $transaksi->harga }}</td>
                     </tr>
                     <tr>
-                        <th>Kode Transaksi</th>
-                        <td>{{ $transaksi->penjualan_kode }}</td>
-                    </tr>
-                    <tr>
-                        <th>Tanggal Transaksi</th>
-                        <td>{{ $transaksi->penjualan_tanggal }}</td>
+                        <th>Jumlah</th>
+                        <td>{{ $transaksi->jumlah }}</td>
                     </tr>
                 </table>
             @endempty

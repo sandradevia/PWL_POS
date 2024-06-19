@@ -12,49 +12,53 @@
                 </div>
                 <a href="{{ url('transaksi') }}" class="btn btn-sm btn-default mt- 2">Kembali</a>
             @else
-                <form method="POST" action="{{ url('/transaksi/' . $transaksi->penjualan_id) }}" class="form-horizontal">
+                <form method="POST" action="{{ url('/transaksi/' . $transaksi->detail_id) }}" class="form-horizontal">
                     @csrf
                     {!! method_field('PUT') !!}
                     <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">Nama User</label>
+                        <label class="col-1 control-label col-form-label">ID Penjualan</label>
                         <div class="col-11">
-                            <select class="form-control" id="user_id" name="user_id" required>
-                                <option value="">- Pilih Nama User -</option>
-                                @foreach ($user as $item)
-                                    <option value="{{ $item->user_id }}" @if ($item->user_id == $transaksi->user_id) selected @endif>
-                                        {{ $item->nama }}</option>
+                            <select class="form-control" id="penjualan_id" name="penjualan_id" required>
+                                <option value="">- Pilih ID Penjualan -</option>
+                                @foreach ($penjualan as $item)
+                                    <option value="{{ $item->penjualan_id }}" @if ($item->penjualan_id == $transaksi->penjualan_id) selected @endif>
+                                        {{ $item->penjualan_id }}</option>
                                 @endforeach
-                            </select> @error('user_id')
+                            </select> @error('penjualan_id')
                                 <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">Nama Pembeli</label>
+                        <label class="col-1 control-label col-form-label">Nama Barang</label>
                         <div class="col-11">
-                            <input type="text" class="form-control" id="pembeli" name="pembeli"
-                                value="{{ old('pembeli', $transaksi->pembeli) }}" required>
-                            @error('pembeli')
+                            <select class="form-control" id="barang_id" name="barang_id" required>
+                                <option value="">- Pilih Nama Barang -</option>
+                                @foreach ($barang as $item)
+                                    <option value="{{ $item->barang_id }}" @if ($item->barang_id == $transaksi->penjualan_id) selected @endif>
+                                        {{ $item->barang_nama }}</option>
+                                @endforeach
+                            </select> @error('barang_id')
                                 <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">Kode Transaksi</label>
+                        <label class="col-1 control-label col-form-label">Harga</label>
                         <div class="col-11">
-                            <input type="text" class="form-control" id="penjualan_kode" name="penjualan_kode"
-                                value="{{ old('penjualan_kode', $transaksi->penjualan_kode) }}" required>
-                            @error('penjualan_kode')
+                            <input type="text" class="form-control" id="harga" name="harga"
+                                value="{{ old('harga', $transaksi->harga) }}" required>
+                            @error('harga')
                                 <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-1 control-label col-form-label">Tanggal Transaksi</label>
+                        <label class="col-1 control-label col-form-label">Jumlah</label>
                         <div class="col-11">
-                            <input type="datetime-local" class="form-control" id="penjualan_tanggal" name="penjualan_tanggal"
-                                value="{{ old('penjualan_tanggal', $transaksi->penjualan_tanggal) }}" required>
-                            @error('penjualan_tanggal')
+                            <input type="text" class="form-control" id="jumlah" name="jumlah"
+                                value="{{ old('jumlah', $transaksi->jumlah) }}" required>
+                            @error('jumlah')
                                 <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
                         </div>

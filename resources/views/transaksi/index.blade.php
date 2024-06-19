@@ -20,13 +20,13 @@
                     <div class="form-group row">
                         <label class="col-1 control-label col-form-label">Filter:</label>
                         <div class="col-3">
-                            <select class="form-control" id="user_id" name="user_id" required>
+                            <select class="form-control" id="barang_id" name="barang_id" required>
                                 <option value="">- Semua -</option>
-                                @foreach ($user as $item)
-                                    <option value="{{ $item->user_id }}">{{ $item->nama }}</option>
+                                @foreach ($barang as $item)
+                                    <option value="{{ $item->barang_id }}">{{ $item->barang_nama }}</option>
                                 @endforeach
                             </select>
-                            <small class="form-text text-muted">Nama User</small>
+                            <small class="form-text text-muted">Nama Barang</small>
                         </div>
                     </div>
                 </div>
@@ -36,10 +36,10 @@
                     <tr>
                         <th>No</th>
                         <th>ID Transaksi</th>
-                        <th>Nama User</th>
-                        <th>Nama Pembeli</th>
-                        <th>Kode Transaksi</th>
-                        <th>Tanggal Transaksi</th>
+                        <th>ID Penjualan</th>
+                        <th>Nama Barang</th>
+                        <th>Harga</th>
+                        <th>Jumlah</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -61,7 +61,7 @@
                     "dataType": "json",
                     "type": "POST",
                     "data": function (d) {
-                        d.user_id = $('#user_id').val();
+                        d.barang_id = $('#barang_id').val();
                     }
                 },
                 columns: [{
@@ -70,27 +70,27 @@
                     orderable: false,
                     searchable: false
                 }, {
+                    data: "detail_id",
+                    className: "",
+                    orderable: true,
+                    searchable: true
+                }, {
                     data: "penjualan_id",
                     className: "",
                     orderable: true,
                     searchable: true
                 }, {
-                    data: "user.nama",
+                    data: "barang.barang_nama",
                     className: "",
                     orderable: true,
                     searchable: true
                 }, {
-                    data: "pembeli",
+                    data: "harga",
                     className: "",
                     orderable: true,
                     searchable: true
                 }, {
-                    data: "penjualan_kode",
-                    className: "",
-                    orderable: true,
-                    searchable: true
-                }, {
-                    data: "penjualan_tanggal",
+                    data: "jumlah",
                     className: "",
                     orderable: true,
                     searchable: true
@@ -102,7 +102,7 @@
                 }]
             });
 
-            $('#user_id').on('change', function() {
+            $('#barang_id').on('change', function() {
                 dataTransaksi.ajax.reload();
             }) ;
 
